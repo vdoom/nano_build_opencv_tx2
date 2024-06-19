@@ -54,7 +54,7 @@ install_dependencies () {
     # package repository or should already be installed (eg. CUDA).
     echo "Installing build dependencies."
     sudo apt-get update
-    sudo apt-get dist-upgrade -y --autoremove
+    #sudo apt-get dist-upgrade -y --autoremove
     sudo apt-get install -y \
         build-essential \
         cmake \
