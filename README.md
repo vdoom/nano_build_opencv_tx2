@@ -7,6 +7,18 @@ Related thread on Nvidia developer forum
 
 [How it Works](https://wiki.debian.org/QemuUserEmulation)
 
+## !!! IMPORTANT !!! 
+In some cases need to add python side dists to the speciall path, otherwise it will install OpenCV for Python2 (This problem othen occures on XavierNX with carrier board Auvidea JNX30D)
+
+```shell
+#Temporary:
+export PYTHONPATH=/usr/lib/python3.8/site-packages
+
+#Permanent:
+#Add to .bashrc
+export PYTHONPATH=/usr/lib/python3.8/site-packages
+```
+
 ## Usage:
 ```shell
 ./build_opencv.sh
