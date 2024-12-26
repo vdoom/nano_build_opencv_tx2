@@ -11,9 +11,10 @@ readonly CPUS=$(nproc)  # controls the number of jobs
 # better board detection. if it has 6 or more cpus, it probably has a ton of ram too
 if [[ $CPUS -gt 5 ]]; then
     # something with a ton of ram
-    JOBS=$CPUS
+    #JOBS=$CPUS
+    JOBS=3
 else
-    JOBS=1  # you can set this to 4 if you have a swap file
+    JOBS=3  # you can set this to 4 if you have a swap file
     # otherwise a Nano will choke towards the end of the build
 fi
 
@@ -103,11 +104,12 @@ install_dependencies () {
 configure () {
     local CMAKEFLAGS="
         -D BUILD_EXAMPLES=OFF
-        -D BUILD_opencv_python2=ON
+        -D BUILD_opencv_python2=OFF
         -D BUILD_opencv_python3=ON
+        -D HAVE_opencv_python3=ON \
         -D CMAKE_BUILD_TYPE=RELEASE
         -D CMAKE_INSTALL_PREFIX=${PREFIX}
-        -D CUDA_ARCH_BIN=5.3,6.2,7.2
+        -D CUDA_ARCH_BIN=5.3,6.2,7.2,8.7
         -D CUDA_ARCH_PTX=
         -D CUDA_FAST_MATH=ON
         -D CUDNN_VERSION='8.0'
@@ -124,7 +126,8 @@ configure () {
         -D WITH_LIBV4L=ON
         -D WITH_OPENGL=ON
         -D PYTHON3_EXECUTABLE=/usr/bin/python3
-        -D PYTHON3_PACKAGES_PATH=/usr/lib/python3.8/site-packages
+        -D PYTHON3_INCLUDE_DIR=/usr/include/python3.8
+        -D PYTHON3_PACKAGES_PATH=/usr/lib/python3/dist-packages
         -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3"
 
     if [[ "$1" != "test" ]] ; then
