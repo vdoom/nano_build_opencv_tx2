@@ -12,9 +12,9 @@ readonly CPUS=$(nproc)  # controls the number of jobs
 if [[ $CPUS -gt 5 ]]; then
     # something with a ton of ram
     #JOBS=$CPUS
-    JOBS=3
+    JOBS=1
 else
-    JOBS=3  # you can set this to 4 if you have a swap file
+    JOBS=1  # you can set this to 4 if you have a swap file
     # otherwise a Nano will choke towards the end of the build
 fi
 
