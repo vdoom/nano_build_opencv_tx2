@@ -98,8 +98,6 @@ install_dependencies () {
         python-dev \
         python-numpy \
         python3-dev \
-        #python3-numpy \
-        #python3-matplotlib \
         qv4l2 \
         v4l-utils \
         zlib1g-dev
